@@ -1,0 +1,79 @@
+---
+// src/components/ProductCardList.astro
+
+import RopaCard from "./ProductCard/RopaCard.astro";
+import ZapatillaCard from "./ProductCard/ZapatoCard.astro";
+import AccesorioCard from "./ProductCard/AccesorioCard.astro";
+
+import type { Ropa, Zapatilla, Accesorio } from "../types/Product";
+
+const ropa: Ropa[] = [
+  {
+    id: 1,
+    title: "Camisa Algodón",
+    price: 89.9,
+    image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+    description: "",
+    color: ["blue", "black", "yellow"],
+    category: "ropa",
+    subcategory: "camisas",
+    material: "Algodón",
+    talla: "M",
+    rating: 4.5,
+  },
+];
+
+const zapatillas: Zapatilla[] = [
+  {
+    id: 2,
+    title: "Zapatilla Urbana",
+    price: 159.9,
+    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    description: "",
+    color: ["green", "orange", "blue"],
+    category: "calzado",
+    subcategory: "zapatillas",
+    material: "Sintético",
+    talla: "42",
+    tipoSuela: "Goma",
+    rating: 3,
+  },
+];
+
+const accesorios: Accesorio[] = [
+  {
+    id: 3,
+    title: "Collar de Plata",
+    price: 199.9,
+    image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+    description: "",
+    color: ["gold", "silver"],
+    category: "accesorios",
+    subcategory: "collares",
+    material: "Plata 925",
+    uso: "Casual",
+    rating: 3.5,
+  },
+];
+---
+
+<section class="mb-8">
+  <h2 class="text-xl font-semibold mb-3">Ropa</h2>
+  <div class="flex gap-4 overflow-x-auto">
+    {ropa.map((item) => <RopaCard product={item} />)}
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-xl font-semibold mb-3">Zapatillas</h2>
+  <div class="flex gap-4 overflow-x-auto">
+    {zapatillas.map((item) => <ZapatillaCard product={item} />)}
+  </div>
+</section>
+
+<section class="mb-8">
+  <h2 class="text-xl font-semibold mb-3">Accesorios</h2>
+  <div class="flex gap-4 overflow-x-auto">
+    {accesorios.map((item) => <AccesorioCard product={item} />)}
+  </div>
+</section>

@@ -5,7 +5,14 @@ import RopaCard from "./ProductCard/RopaCard.astro";
 import ZapatillaCard from "./ProductCard/ZapatoCard.astro";
 import AccesorioCard from "./ProductCard/AccesorioCard.astro";
 
-import type { Ropa, Zapatilla, Accesorio } from "../types/Product";
+import {
+  type Ropa,
+  type Zapatilla,
+  type Accesorio,
+  Category,
+  type BaseProduct,
+} from "../types/Product";
+import ProductoSection from "./ProductCard/ProductoSection.astro";
 
 const ropa: Ropa[] = [
   {
@@ -15,7 +22,7 @@ const ropa: Ropa[] = [
     image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
     description: "",
     color: ["blue", "black", "yellow"],
-    category: "ropa",
+    category: Category.ROPA,
     subcategory: "camisas",
     material: "Algodón",
     talla: "M",
@@ -31,7 +38,7 @@ const zapatillas: Zapatilla[] = [
     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
     description: "",
     color: ["green", "orange", "blue"],
-    category: "calzado",
+    category: Category.CALZADO,
     subcategory: "zapatillas",
     material: "Sintético",
     talla: "42",
@@ -48,32 +55,51 @@ const accesorios: Accesorio[] = [
     image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
     description: "",
     color: ["gold", "silver"],
-    category: "accesorios",
+    category: Category.ACCESORIOS,
     subcategory: "collares",
     material: "Plata 925",
     uso: "Casual",
     rating: 3.5,
   },
 ];
+
+const productos: BaseProduct[] = [...ropa, ...zapatillas, ...accesorios];
+console.log(productos);
+const grouped = productos.reduce(
+  (acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item);
+    return acc;
+  },
+  {} as Record<Category, BaseProduct[]>
+);
 ---
 
-<section class="mb-8">
-  <h2 class="text-xl font-semibold mb-3">Ropa</h2>
-  <div class="flex gap-4 overflow-x-auto">
-    {ropa.map((item) => <RopaCard product={item} />)}
-  </div>
-</section>
-
-<section class="mb-8">
-  <h2 class="text-xl font-semibold mb-3">Zapatillas</h2>
-  <div class="flex gap-4 overflow-x-auto">
-    {zapatillas.map((item) => <ZapatillaCard product={item} />)}
-  </div>
-</section>
-
-<section class="mb-8">
-  <h2 class="text-xl font-semibold mb-3">Accesorios</h2>
-  <div class="flex gap-4 overflow-x-auto">
-    {accesorios.map((item) => <AccesorioCard product={item} />)}
-  </div>
-</section>
+<div class="flex flex-col gap-8 px-4 py-8">
+  {
+    grouped[Category.ROPA] && (
+      <ProductoSection
+        product={grouped[Category.ROPA]}
+        category={Category.ROPA}
+      />
+    )
+  }
+  {
+    grouped[Category.CALZADO] && (
+      <ProductoSection
+        product={grouped[Category.CALZADO]}
+        category={Category.CALZADO}
+      />
+    )
+  }
+  {
+    grouped[Category.ACCESORIOS] && (
+      <ProductoSection
+        product={grouped[Category.ACCESORIOS]}
+        category={Category.ACCESORIOS}
+      />
+    )
+  }
+</div>

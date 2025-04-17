@@ -1,0 +1,56 @@
+---
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import type { BaseProduct, Ropa } from "../../types/Product";
+
+const props = Astro.props as { product: BaseProduct };
+
+const decimal = props.product.rating % 1;
+const fullStars = Math.floor(props.product.rating);
+const halfStar = decimal >= 0.3 && decimal <= 0.7;
+const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+---
+
+<div class="bg-white rounded-lg shadow-lg px-4 w-64 flex flex-col">
+  <img
+    src={props.product.image}
+    alt={props.product.title}
+    class="h-40 w-full object-contain mb-4 mt-4"
+  />
+
+  <h3 class="text-xl font-bold mb-3 nunito-script">{props.product.title}</h3>
+
+  <div class="flex gap-1 mb-3">
+    {
+      props.product.color.map((col: string) => (
+        <div
+          class="w-4 h-4 rounded-full border border-neutral-400"
+          style={`background-color: ${col}`}
+          title={col}
+        />
+      ))
+    }
+  </div>
+
+  <p class="text-lg text-gray-800 font-semibold mb-3 nunito-script">
+    S/. {props.product.price}
+  </p>
+
+  <div
+    class="text-yellow-500 text-md flex gap-1 mb-3"
+    title={`Rating: ${props.product.rating}`}
+  >
+    {Array.from({ length: fullStars }).map(() => <FaStar className="inline" />)}
+    {halfStar && <FaStarHalfAlt className="inline" />}
+    {
+      Array.from({ length: emptyStars }).map(() => (
+        <FaRegStar className="inline text-gray-300" />
+      ))
+    }
+  </div>
+  <a
+    href={`/shop/${props.product.title}`}
+    class="bg-green-950 w-full text-center px-4 rounded-lg text-white font-bold py-2"
+  >
+    Ver detalle</a
+  >
+</div>

@@ -1,7 +1,7 @@
 ---
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import type { BaseProduct, Ropa } from "../../types/Product";
-
+import ImageSlider from "./ImageSlider";
 const props = Astro.props as { product: BaseProduct };
 
 const decimal = props.product.rating % 1;
@@ -11,11 +11,7 @@ const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 ---
 
 <div class="bg-white rounded-lg shadow-lg px-4 w-64 flex flex-col">
-  <img
-    src={props.product.image}
-    alt={props.product.title}
-    class="h-40 w-full object-contain mb-4 mt-4"
-  />
+  <ImageSlider images={props.product.images} client:only/>
 
   <h3 class="text-xl font-bold mb-3 nunito-script">{props.product.title}</h3>
 

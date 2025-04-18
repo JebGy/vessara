@@ -1,0 +1,170 @@
+---
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { Category, type Accesorio, type BaseProduct, type Ropa, type Zapatilla } from "../../types/Product";
+
+export const prerender = false;
+
+const ropa: Ropa[] = [
+  {
+    id: 1,
+    title: "Camisa Algodón",
+    price: 89.9,
+    image: "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+    description: "",
+    color: ["blue", "black", "yellow"],
+    category: Category.ROPA,
+    subcategory: "camisas",
+    material: "Algodón",
+    talla: "M",
+    rating: 4.5,
+  },
+];
+
+const zapatillas: Zapatilla[] = [
+  {
+    id: 2,
+    title: "Zapatilla Urbana",
+    price: 159.9,
+    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    description: "",
+    color: ["green", "orange", "blue"],
+    category: Category.CALZADO,
+    subcategory: "zapatillas",
+    material: "Sintético",
+    talla: "42",
+    tipoSuela: "Goma",
+    rating: 3,
+  },
+];
+
+const accesorios: Accesorio[] = [
+  {
+    id: 3,
+    title: "Collar de Plata",
+    price: 199.9,
+    image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+    description: "",
+    color: ["gold", "silver"],
+    category: Category.ACCESORIOS,
+    subcategory: "collares",
+    material: "Plata 925",
+    uso: "Casual",
+    rating: 3.5,
+  },
+];
+
+const productos = [...ropa, ...zapatillas, ...accesorios];
+
+const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find((v) => v.title === Astro.params.slug) ?? {
+  id: 0,
+  title: "",
+  price: 0,
+  image: "",
+  description: "",
+  color: [],
+  category: Category.ROPA,
+  subcategory: "",
+  material: "",
+  talla: "",
+  rating: 0,
+};
+
+//has una función que consulte a Firebase los datos del producto
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+  </head>
+  <body class="relative overflow-x-hidden font-sans">
+    <header class="bg-white p-4 shadow mb-8">
+      <h1>{productoPrueba.title}</h1>
+    </header>
+    <section class="grid grid-cols-2 gap-4">
+      <section class="w-full flex flex-col items-center justify-center gap-4">
+        <img
+          src={productoPrueba.image}
+          alt={productoPrueba.description}
+          class="h-96 border rounded-lg p-4 border-gray-200 shadow"
+        />
+        <ul class="flex flex-row gap-2 w-96 max-w-96 overflow-x-auto">
+          {
+            Array.from({ length: 6 }, (_, index) => (
+            <img
+                  src={productoPrueba.image}
+                  alt={productoPrueba.description}
+                  class="h-20 w-20 border rounded-lg p-4 border-gray-200 shadow"
+                />
+            ))
+          }
+        </ul>
+      </section>
+      <section class="flex flex-col gap-1">
+        <h1 class="text-3xl font-bold underline">{productoPrueba.title}</h1>
+        <p class="text-sm pl-2 border-l-4 border-l-green-800">
+          {productoPrueba.description}
+        </p>
+        <div class="flex flex-row items-center gap-4 mt-4">
+          <h2 class="text-xl">Calificación Promedio</h2>
+          <div
+            class="text-yellow-500 text-md flex gap-1"
+            title={`Rating: ${productoPrueba.rating}`}
+          >
+            {
+              Array.from({ length: Math.floor(productoPrueba.rating) }).map(
+                (_, index) => <FaStar className="inline" />
+              )
+            }
+
+            {
+              productoPrueba.rating % 1 >= 0.5 && (
+                <FaStarHalfAlt className="inline" />
+              )
+            }
+
+            {
+              Array.from({
+                length: 5 - Math.ceil(productoPrueba.rating),
+              }).map((_, index) => (
+                <FaRegStar className="inline text-gray-300" />
+              ))
+            }
+          </div>
+        </div>
+
+        <p class="font-bold text-4xl my-4">S/ {productoPrueba.price}</p>
+        <div class="flex flex-row gap-4">
+          <span class="bg-gray-200 px-2 py-1 rounded-full w-fit"
+            >{productoPrueba.category}</span
+          >
+          <span class="bg-gray-200 px-2 py-1 rounded-full w-fit"
+            >{productoPrueba.subcategory}</span
+          >
+        </div>
+        <div class="grid grid-cols-2 mt-2 py-2 border-y-2 w-96 border-y-gray-300 mb-4">
+          <p class="flex flex-col">
+            Material: <span class="font-bold">{productoPrueba.material}</span>
+          </p>
+          <p class="flex flex-col">
+            {"talla" in productoPrueba ? (
+              <>
+                Talla: <span class="font-bold">{productoPrueba.talla}</span>
+              </>
+            ) : (
+              <>
+                Uso: <span class="font-bold">{productoPrueba.uso}</span>
+              </>
+            )}
+          </p>
+        </div>
+        <h2 class="font-bold">Variantes:</h2>
+        <select name="" id="" class="w-64 border-b-2">
+          {productoPrueba.color.map((v) => <option value={v}>{v}</option>)}
+        </select>
+      </section>
+    </section>
+  </body>
+</html>

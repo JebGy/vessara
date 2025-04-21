@@ -1,0 +1,251 @@
+---
+import CommentComponent from "./CommentComponent.astro";
+
+const users = [
+  {
+    gender: "female",
+    name: {
+      title: "Mrs",
+      first: "Ljubica",
+      last: "Zelenović",
+    },
+    location: {
+      street: {
+        number: 4798,
+        name: "Miodraga Popovića",
+      },
+      city: "Babušnica",
+      state: "Jablanica",
+      country: "Serbia",
+      postcode: 97479,
+      coordinates: {
+        latitude: "63.0066",
+        longitude: "90.1043",
+      },
+      timezone: {
+        offset: "+3:30",
+        description: "Tehran",
+      },
+    },
+    email: "ljubica.zelenovic@example.com",
+    login: {
+      uuid: "7fa97801-f7c9-4f98-aa11-c771a4cb0de2",
+      username: "beautifulpeacock507",
+      password: "bassman",
+      salt: "CVL0KHAP",
+      md5: "e5371b8cf03427f9b4f1ea2718b32a0c",
+      sha1: "c7d8941035a4ecfcfe2ddb3e1726e511e81d2667",
+      sha256:
+        "455c9d44a4a66fab927161959e4fbf8b9ef6fe07531b0821f0a7f644afdd0e26",
+    },
+    dob: {
+      date: "1971-05-17T04:20:29.576Z",
+      age: 53,
+    },
+    registered: {
+      date: "2004-07-30T22:44:34.006Z",
+      age: 20,
+    },
+    phone: "018-7089-118",
+    cell: "066-9587-877",
+    id: {
+      name: "SID",
+      value: "691061519",
+    },
+    picture: {
+      large: "https://randomuser.me/api/portraits/women/65.jpg",
+      medium: "https://randomuser.me/api/portraits/med/women/65.jpg",
+      thumbnail: "https://randomuser.me/api/portraits/thumb/women/65.jpg",
+    },
+    nat: "RS",
+  },
+  {
+    gender: "female",
+    name: {
+      title: "Mrs",
+      first: "Elise",
+      last: "Lemaire",
+    },
+    location: {
+      street: {
+        number: 494,
+        name: "Avenue Paul Eluard",
+      },
+      city: "Reims",
+      state: "Gard",
+      country: "France",
+      postcode: 50016,
+      coordinates: {
+        latitude: "-57.1235",
+        longitude: "127.0530",
+      },
+      timezone: {
+        offset: "-7:00",
+        description: "Mountain Time (US & Canada)",
+      },
+    },
+    email: "elise.lemaire@example.com",
+    login: {
+      uuid: "ae9ebdcb-af31-4929-af6c-488201b47d61",
+      username: "tinykoala591",
+      password: "saigon",
+      salt: "ZxhwH7uJ",
+      md5: "503dd502888548d43210e7dec9307759",
+      sha1: "15545101d77a0d3fbeffd2e0355e3922648579d6",
+      sha256:
+        "8e90d1d7298056162a75dfbcc24557ca04110385ea117774be4f3747356b9410",
+    },
+    dob: {
+      date: "1988-04-17T02:17:48.842Z",
+      age: 37,
+    },
+    registered: {
+      date: "2019-07-10T01:50:10.454Z",
+      age: 5,
+    },
+    phone: "05-10-09-95-04",
+    cell: "06-67-83-13-52",
+    id: {
+      name: "INSEE",
+      value: "2880371795897 12",
+    },
+    picture: {
+      large: "https://randomuser.me/api/portraits/women/35.jpg",
+      medium: "https://randomuser.me/api/portraits/med/women/35.jpg",
+      thumbnail: "https://randomuser.me/api/portraits/thumb/women/35.jpg",
+    },
+    nat: "FR",
+  },
+  {
+    gender: "male",
+    name: {
+      title: "Mr",
+      first: "Rachit",
+      last: "Gatty",
+    },
+    location: {
+      street: {
+        number: 2143,
+        name: "Bandstand Promenade",
+      },
+      city: "Hindupur",
+      state: "Jharkhand",
+      country: "India",
+      postcode: 68148,
+      coordinates: {
+        latitude: "-25.2622",
+        longitude: "13.0808",
+      },
+      timezone: {
+        offset: "+3:00",
+        description: "Baghdad, Riyadh, Moscow, St. Petersburg",
+      },
+    },
+    email: "rachit.gatty@example.com",
+    login: {
+      uuid: "e59cd68c-d5f3-411e-b807-acd52583c2cf",
+      username: "browndog627",
+      password: "horseman",
+      salt: "VsDljdgt",
+      md5: "e45b56a5b4f264149c006b94d4150f7b",
+      sha1: "f7f091bfba349d8663c9deed6cbf280f475074ae",
+      sha256:
+        "e93b9981b3deaf4432254ed07b816da4226bf135dba006c40e6687fac6e99a52",
+    },
+    dob: {
+      date: "1951-02-22T03:13:09.537Z",
+      age: 74,
+    },
+    registered: {
+      date: "2004-08-05T23:23:27.956Z",
+      age: 20,
+    },
+    phone: "9833133464",
+    cell: "9347804326",
+    id: {
+      name: "UIDAI",
+      value: "378052104417",
+    },
+    picture: {
+      large: "https://randomuser.me/api/portraits/men/5.jpg",
+      medium: "https://randomuser.me/api/portraits/med/men/5.jpg",
+      thumbnail: "https://randomuser.me/api/portraits/thumb/men/5.jpg",
+    },
+    nat: "IN",
+  },
+  {
+    gender: "female",
+    name: {
+      title: "Mrs",
+      first: "Victoria",
+      last: "Olsen",
+    },
+    location: {
+      street: {
+        number: 1945,
+        name: "Børupvej",
+      },
+      city: "Kongsvinger",
+      state: "Syddanmark",
+      country: "Denmark",
+      postcode: 45737,
+      coordinates: {
+        latitude: "2.4160",
+        longitude: "128.4416",
+      },
+      timezone: {
+        offset: "+10:00",
+        description: "Eastern Australia, Guam, Vladivostok",
+      },
+    },
+    email: "victoria.olsen@example.com",
+    login: {
+      uuid: "fc84b483-057a-4c47-b211-47329110fc66",
+      username: "smallbear362",
+      password: "lucille",
+      salt: "rSVyjgqe",
+      md5: "40179f1923e219849528bdb7391ee053",
+      sha1: "e7fcaab1be6b1d774dd7b3f1d7a33c61fb369725",
+      sha256:
+        "caeb2a4d82564a193fd12994f82234cb1d791f50af84bc330d0294c9f4f7c06c",
+    },
+    dob: {
+      date: "1984-08-25T09:00:20.067Z",
+      age: 40,
+    },
+    registered: {
+      date: "2017-11-11T09:30:17.856Z",
+      age: 7,
+    },
+    phone: "99563743",
+    cell: "35377792",
+    id: {
+      name: "CPR",
+      value: "250884-9836",
+    },
+    picture: {
+      large: "https://randomuser.me/api/portraits/women/84.jpg",
+      medium: "https://randomuser.me/api/portraits/med/women/84.jpg",
+      thumbnail: "https://randomuser.me/api/portraits/thumb/women/84.jpg",
+    },
+    nat: "DK",
+  },
+];
+---
+
+<div class="col-span-full mt-8">
+  <h1 class="text-lg font-semibold mb-2">Comentarios</h1>
+  {
+    users.length > 0 && (
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+        {users.map((user) => (
+          <CommentComponent
+            picture={user.picture.large}
+            name={`${user.name.first} ${user.name.last}`}
+            comment="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          />
+        ))}
+      </div>
+    )
+  }
+</div>

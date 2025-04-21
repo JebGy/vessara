@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import CommentsListComponent from "./CommentsListComponent.astro";
 
 const AddComment = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg max-w-md mt-6">
+    <div className="bg-gray-100 p-6 rounded-lg w-full h-full">
       <h3 className="text-lg font-semibold mb-2">Agrega un comentario</h3>
 
       <div className="flex mb-4 text-green-900 text-2xl">
@@ -34,6 +35,7 @@ const AddComment = () => {
       <button className="bg-green-900 text-white px-4 py-2 rounded mt-4 hover:bg-green-950 transition">
         Enviar comentario
       </button>
+      
     </div>
   );
 };

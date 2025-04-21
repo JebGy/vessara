@@ -1,0 +1,30 @@
+---
+import { FaStar } from "react-icons/fa";
+
+const { picture, name, comment } = Astro.props;
+const rating = parseFloat((Math.random() * 4 + 1).toFixed(2)); // Random decimal between 1 and 5
+---
+
+<section class="bg-gray-100 rounded-md p-4">
+  <section class="flex items-center justify-between gap-2">
+    <div class="flex items-center gap-4">
+      <img src={picture} alt={name} class="w-8 rounded-full" />
+      <h2 class="font-bold">{name}</h2>
+    </div>
+
+    <div class="flex text-green-900 text-2xl">
+      {
+        [1, 2, 3, 4, 5].map((star) => (
+          <button class="focus:outline-none">
+            <FaStar
+              className={star <= rating ? "text-green-700" : "text-gray-300"}
+            />
+          </button>
+        ))
+      }
+    </div>
+  </section>
+  <p class=" text-gray-700 text-sm mt-2">
+    {comment}
+  </p>
+</section>

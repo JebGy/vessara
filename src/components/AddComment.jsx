@@ -7,7 +7,7 @@ const AddComment = () => {
   const [comment, setComment] = useState("");
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg w-full h-full">
+    <div className="bg-gray-100 p-6 rounded-lg max-w-lg lg:w-5/6 w-full h-full mr-0">
       <h3 className="text-lg font-semibold mb-2">Agrega un comentario</h3>
 
       <div className="flex mb-4 text-green-900 text-2xl">

@@ -1,9 +1,13 @@
 ---
 import ProductCardList from "./ProductCardList.astro";
 ---
+<head>
+  
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
 
 <div
-  class="pt-40 bg-gray-50 font-nunito min-h-screen"
+  class="pt-10 bg-gray-50 font-nunito min-h-screen"
   x-data="{ 
     openZapatillas: false, 
     openRopa: false, 
@@ -13,7 +17,8 @@ import ProductCardList from "./ProductCardList.astro";
 >
   <main class="flex px-8">
     <!-- Filtro lateral -->
-    <aside class="w-64 p-4 bg-white shadow-md rounded-lg">
+    <aside class="w-48 p-3 bg-white shadow-md rounded-lg self-start max-h-[600px] overflow-auto">
+
       <h1 class="font-bold text-lg mb-4">Categoría</h1>
       <ul class="space-y-4 mb-6">
         <!-- Zapatillas -->

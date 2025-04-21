@@ -32,7 +32,39 @@ const ropa: Ropa[] = [
     rating: 4.5,
   },
   {
-    id: 1,
+    id: 2,
+    title: "Camisa Algodón",
+    price: 89.9,
+    images: [
+      "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    ],
+    description: "",
+    color: ["blue", "black", "yellow"],
+    category: Category.ROPA,
+    subcategory: "camisas",
+    material: "Algodón",
+    talla: "M",
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    title: "Camisa Algodón",
+    price: 89.9,
+    images: [
+      "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    ],
+    description: "",
+    color: ["blue", "black", "yellow"],
+    category: Category.ROPA,
+    subcategory: "camisas",
+    material: "Algodón",
+    talla: "M",
+    rating: 4.5,
+  },
+  {
+    id: 3,
     title: "Camisa Algodón",
     price: 89.9,
     images: [
@@ -49,7 +81,7 @@ const ropa: Ropa[] = [
   },
 ];
 
-const zapatillas: Zapatilla[] = [
+/* const zapatillas: Zapatilla[] = [
   {
     id: 2,
     title: "Zapatilla Urbana",
@@ -88,9 +120,9 @@ const accesorios: Accesorio[] = [
     uso: "Casual",
     rating: 3.5,
   },
-];
+]; */
 
-const productos: BaseProduct[] = [...ropa, ...zapatillas, ...accesorios];
+const productos: BaseProduct[] = [...ropa /* ...zapatillas, ...accesorios */];
 console.log(productos);
 const grouped = productos.reduce(
   (acc, item) => {
@@ -104,7 +136,7 @@ const grouped = productos.reduce(
 );
 ---
 
-<div class="flex flex-col gap-8 px-4">
+<div class="flex flex-col gap-8">
   {
     grouped[Category.ROPA] && (
       <ProductoSection

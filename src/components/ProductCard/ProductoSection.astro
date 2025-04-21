@@ -6,8 +6,9 @@ const propiedades: { product: BaseProduct[]; category: Category } =
   Astro.props as { product: BaseProduct[]; category: Category };
 ---
 
-<section class="mb-8">
-  <h2 class="text-xl font-semibold mb-3">{propiedades.category}</h2>
+<section class="mb-1">
+  <!--   <h2 class="text-xl font-semibold mb-3">{propiedades.category}</h2>
+ -->
   <!-- Titulo General -->
   <div class="flex flex-row gap-4 overflow-x-auto h-96">
     {propiedades.product.map((item) => <Producto product={item} />)}

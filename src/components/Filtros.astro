@@ -1,13 +1,15 @@
 ---
 import ProductCardList from "./ProductCardList.astro";
 ---
+
 <head>
-  
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <div
-  class="pt-10 bg-gray-50 font-nunito min-h-screen"
+  class="pt-6 bg-gray-50 font-nunito min-h-screen"
   x-data="{ 
     openZapatillas: false, 
     openRopa: false, 
@@ -15,10 +17,11 @@ import ProductCardList from "./ProductCardList.astro";
     price: 150 
   }"
 >
-  <main class="flex px-8">
+  <main class="grid grid-cols-[200px_1fr] gap-4 px-8 nunito-script">
     <!-- Filtro lateral -->
-    <aside class="w-48 p-3 bg-white shadow-md rounded-lg self-start max-h-[600px] overflow-auto">
-
+    <aside
+      class="p-3 bg-white shadow-md rounded-lg self-start max-h-[600px] overflow-auto"
+    >
       <h1 class="font-bold text-lg mb-4">Categoría</h1>
       <ul class="space-y-4 mb-6">
         <!-- Zapatillas -->
@@ -88,25 +91,53 @@ import ProductCardList from "./ProductCardList.astro";
           min="0"
           max="500"
           step="10"
-          class="w-full mt-2 accent-green-600"
+          class="w-full mt-2 accent-green-800"
         />
       </div>
     </aside>
 
     <!-- Contenido principal -->
-    <section class="flex-1 p-4">
+    <section class="flex flex-col gap-4">
       <!-- Ordenar por -->
-      <div class="flex justify-end mb-4">
-        <label class="font-semibold mr-2 text-gray-700">Ordenar por:</label>
-        <select
-          class="border border-gray-300 px-2 py-1 rounded text-sm text-gray-700"
-        >
-          <option>Recomendados</option>
-          <option>Precio: menor a mayor</option>
-          <option>Precio: mayor a menor</option>
-        </select>
+      <div
+        class="flex justify-between items-center bg-white shadow-md p-4 rounded-lg"
+      >
+        <!-- Ordenar por -->
+        <div class="flex flex-col">
+          <label class="font-semibold mb-2 text-gray-700">Ordenar por:</label>
+          <select
+            class="border border-gray-300 px-2 py-1 rounded text-sm text-gray-700"
+          >
+            <option>Recomendados</option>
+            <option>Precio: menor a mayor</option>
+            <option>Precio: mayor a menor</option>
+          </select>
+        </div>
+
+        <!-- Paginación centrada verticalmente -->
+        <div class="flex gap-3 items-center">
+          <button
+            class="w-8 h-8 rounded-full border border-gray-300 text-sm hover:bg-gray-100"
+          >
+            1
+          </button>
+          <button
+            class="w-8 h-8 rounded-full border border-gray-300 text-sm hover:bg-gray-100"
+          >
+            2
+          </button>
+          <button
+            class="w-8 h-8 rounded-full border border-gray-300 text-sm hover:bg-gray-100"
+          >
+            3
+          </button>
+        </div>
       </div>
-      <ProductCardList />
+
+      <!-- Lista de productos -->
+      <div class="">
+        <ProductCardList />
+      </div>
     </section>
   </main>
 </div>

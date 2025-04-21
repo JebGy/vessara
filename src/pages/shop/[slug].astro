@@ -190,10 +190,11 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
           {productoPrueba.color.map((v) => <option value={v}>{v}</option>)}
         </select>
       </section>
-      <RatingSummary />
-      <AddComment />
+      <div class="bg-white rounded-lg shadow-md p-4 mx-8 flex gap-6">
+        <RatingSummary />
+        <AddComment />
+      </div>
     </section>
-
     <Footer />
   </body>
 </html>

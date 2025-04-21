@@ -19,7 +19,26 @@ const ropa: Ropa[] = [
     id: 1,
     title: "Camisa Algodón",
     price: 89.9,
-    images: ["https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg","https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"],
+    images: [
+      "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    ],
+    description: "",
+    color: ["blue", "black", "yellow"],
+    category: Category.ROPA,
+    subcategory: "camisas",
+    material: "Algodón",
+    talla: "M",
+    rating: 4.5,
+  },
+  {
+    id: 1,
+    title: "Camisa Algodón",
+    price: 89.9,
+    images: [
+      "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    ],
     description: "",
     color: ["blue", "black", "yellow"],
     category: Category.ROPA,
@@ -35,7 +54,11 @@ const zapatillas: Zapatilla[] = [
     id: 2,
     title: "Zapatilla Urbana",
     price: 159.9,
-    images: ["https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg","https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"],
+    images: [
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    ],
     description: "",
     color: ["green", "orange", "blue"],
     category: Category.CALZADO,
@@ -52,7 +75,11 @@ const accesorios: Accesorio[] = [
     id: 3,
     title: "Collar de Plata",
     price: 199.9,
-    images: ["https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg", "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg","https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg" ],
+    images: [
+      "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+    ],
     description: "",
     color: ["gold", "silver"],
     category: Category.ACCESORIOS,
@@ -77,7 +104,7 @@ const grouped = productos.reduce(
 );
 ---
 
-<div class="flex flex-col gap-8 px-4 py-8">
+<div class="flex flex-col gap-8 px-4">
   {
     grouped[Category.ROPA] && (
       <ProductoSection

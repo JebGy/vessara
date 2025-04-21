@@ -9,6 +9,8 @@ import {
 } from "../../types/Product";
 import RatingSummary from "../../components/RatingSummary";
 import AddComment from "../../components/AddComment.jsx";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer";
 
 export const prerender = false;
 
@@ -101,10 +103,8 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
     <title>Document</title>
   </head>
   <body class="relative overflow-x-hidden font-sans">
-    <header class="bg-white p-4 shadow mb-8">
-      <h1>{productoPrueba.title}</h1>
-    </header>
-    <section class="grid grid-cols-2 gap-4">
+    <Header />
+    <section class="grid grid-cols-2 gap-4 my-8">
       <section class="w-full flex flex-col items-center justify-center gap-4">
         <img
           src={productoPrueba.images[0]}
@@ -190,8 +190,10 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
           {productoPrueba.color.map((v) => <option value={v}>{v}</option>)}
         </select>
       </section>
+      <RatingSummary />
+      <AddComment />
     </section>
-    <RatingSummary />
-    <AddComment />
+
+    <Footer />
   </body>
 </html>

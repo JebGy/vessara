@@ -11,7 +11,7 @@ const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 ---
 
 <div class="bg-white rounded-lg shadow-lg px-4 w-64 flex flex-col">
-  <ImageSlider images={props.product.images} client:only/>
+  <ImageSlider images={props.product.images} client:only />
 
   <h3 class="text-xl font-bold mb-3 nunito-script">{props.product.title}</h3>
 
@@ -45,7 +45,7 @@ const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
   </div>
   <a
     href={`/shop/${props.product.title}`}
-    class="bg-green-950 w-full text-center px-4 rounded-lg text-white font-bold py-2"
+    class="bg-green-900 w-full text-center px-4 rounded-lg text-white font-bold py-2 nunito-script"
   >
     Ver detalle</a
   >

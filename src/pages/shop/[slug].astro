@@ -1,6 +1,14 @@
 ---
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { Category, type Accesorio, type BaseProduct, type Ropa, type Zapatilla } from "../../types/Product";
+import {
+  Category,
+  type Accesorio,
+  type BaseProduct,
+  type Ropa,
+  type Zapatilla,
+} from "../../types/Product";
+import RatingSummary from "../../components/RatingSummary";
+import AddComment from "../../components/AddComment.jsx";
 
 export const prerender = false;
 
@@ -9,7 +17,10 @@ const ropa: Ropa[] = [
     id: 1,
     title: "Camisa Algodón",
     price: 89.9,
-    images: ["https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg","https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"],
+    images: [
+      "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    ],
     description: "",
     color: ["blue", "black", "yellow"],
     category: Category.ROPA,
@@ -25,7 +36,11 @@ const zapatillas: Zapatilla[] = [
     id: 2,
     title: "Zapatilla Urbana",
     price: 159.9,
-    images: ["https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg","https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"],
+    images: [
+      "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    ],
     description: "",
     color: ["green", "orange", "blue"],
     category: Category.CALZADO,
@@ -42,7 +57,11 @@ const accesorios: Accesorio[] = [
     id: 3,
     title: "Collar de Plata",
     price: 199.9,
-    images: ["https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg", "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg","https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg" ],
+    images: [
+      "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+    ],
     description: "",
     color: ["gold", "silver"],
     category: Category.ACCESORIOS,
@@ -53,10 +72,11 @@ const accesorios: Accesorio[] = [
   },
 ];
 
-
 const productos = [...ropa, ...zapatillas, ...accesorios];
 
-const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find((v) => v.title === Astro.params.slug) ?? {
+const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
+  (v) => v.title === Astro.params.slug
+) ?? {
   id: 0,
   title: "",
   price: 0,
@@ -86,21 +106,21 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find((v) => v.tit
     </header>
     <section class="grid grid-cols-2 gap-4">
       <section class="w-full flex flex-col items-center justify-center gap-4">
-        <!-- <img
-          src={productoPrueba.images}
+        <img
+          src={productoPrueba.images[0]}
           alt={productoPrueba.description}
           class="h-96 border rounded-lg p-4 border-gray-200 shadow"
-        /> -->
+        />
         <ul class="flex flex-row gap-2 w-96 max-w-96 overflow-x-auto">
-         <!--  {
+          {
             Array.from({ length: 6 }, (_, index) => (
-            <img
-                  src={productoPrueba.images}
-                  alt={productoPrueba.description}
-                  class="h-20 w-20 border rounded-lg p-4 border-gray-200 shadow"
-                />
+              <img
+                src={productoPrueba.images[0]}
+                alt={productoPrueba.description}
+                class="h-20 w-20 border rounded-lg p-4 border-gray-200 shadow"
+              />
             ))
-          } -->
+          }
         </ul>
       </section>
       <section class="flex flex-col gap-1">
@@ -145,20 +165,24 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find((v) => v.tit
             >{productoPrueba.subcategory}</span
           >
         </div>
-        <div class="grid grid-cols-2 mt-2 py-2 border-y-2 w-96 border-y-gray-300 mb-4">
+        <div
+          class="grid grid-cols-2 mt-2 py-2 border-y-2 w-96 border-y-gray-300 mb-4"
+        >
           <p class="flex flex-col">
             Material: <span class="font-bold">{productoPrueba.material}</span>
           </p>
           <p class="flex flex-col">
-            {"talla" in productoPrueba ? (
-              <>
-                Talla: <span class="font-bold">{productoPrueba.talla}</span>
-              </>
-            ) : (
-              <>
-                Uso: <span class="font-bold">{productoPrueba.uso}</span>
-              </>
-            )}
+            {
+              "talla" in productoPrueba ? (
+                <>
+                  Talla: <span class="font-bold">{productoPrueba.talla}</span>
+                </>
+              ) : (
+                <>
+                  Uso: <span class="font-bold">{productoPrueba.uso}</span>
+                </>
+              )
+            }
           </p>
         </div>
         <h2 class="font-bold">Variantes:</h2>
@@ -167,5 +191,7 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find((v) => v.tit
         </select>
       </section>
     </section>
+    <RatingSummary />
+    <AddComment />
   </body>
 </html>

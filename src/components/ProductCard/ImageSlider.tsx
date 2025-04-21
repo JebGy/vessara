@@ -9,7 +9,7 @@ function ImageSlider(props: { images: string[] }) {
         alt=""
         className="h-40 w-full object-contain mb-4 mt-4"
       />
-      <div className="absolute bottom-0 right-0 bg-gray-900 w-fit rounded-full flex flex-row gap-1 p-1">
+      <div className="absolute bottom-0 right-0 bg-gray-900 w-fit rounded-full flex flex-row gap-1 px-1">
         {props.images.map((v, i) => {
           const isSelected = currentImage === v;
           return (

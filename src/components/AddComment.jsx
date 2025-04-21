@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import CommentsListComponent from "./CommentsListComponent.astro";
 
 const AddComment = () => {
   const [rating, setRating] = useState(0);

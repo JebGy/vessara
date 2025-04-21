@@ -8,7 +8,7 @@ const RatingSummary = () => {
   const getBarWidth = (count) => `${(count / totalReviews) * 100}%`;
 
   return (
-    <div className="p-6 w-1/2 mx-auto">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-lg lg:w-5/6 w-full h-full">
       <h2 className="text-lg font-semibold mb-4 border-b pb-2">
         Comentarios de este producto
       </h2>

@@ -11,6 +11,7 @@ import RatingSummary from "../../components/RatingSummary";
 import AddComment from "../../components/AddComment.jsx";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer";
+import CommentsListComponent from "../../components/CommentsListComponent.astro";
 
 export const prerender = false;
 
@@ -92,6 +93,7 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
   rating: 0,
 };
 
+const { slug } = Astro.params; //obtiene el slug de la url
 //has una función que consulte a Firebase los datos del producto
 ---
 
@@ -100,11 +102,11 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <title>Vessara - {slug}</title>
   </head>
   <body class="relative overflow-x-hidden font-sans">
     <Header />
-    <section class="grid grid-cols-2 gap-4 my-8">
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-8">
       <section class="w-full flex flex-col items-center justify-center gap-4">
         <img
           src={productoPrueba.images[0]}
@@ -123,7 +125,7 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
           }
         </ul>
       </section>
-      <section class="flex flex-col gap-1">
+      <section class="flex flex-col gap-1 mx-auto lg:mx-0">
         <h1 class="text-3xl font-bold underline">{productoPrueba.title}</h1>
         <p class="text-sm pl-2 border-l-4 border-l-green-800">
           {productoPrueba.description}
@@ -190,10 +192,15 @@ const productoPrueba: Ropa | Zapatilla | Accesorio = productos.find(
           {productoPrueba.color.map((v) => <option value={v}>{v}</option>)}
         </select>
       </section>
-      <div class="bg-white rounded-lg shadow-md p-4 mx-8 flex gap-6">
+    </section>
+    <section class="grid grid-cols-1 lg:grid-cols-2 px-16 py-16">
+      <div
+        class="flex lg:flex-row flex-col items-center gap-8 justify-between w-full col-span-full"
+      >
         <RatingSummary />
         <AddComment />
       </div>
+      <CommentsListComponent />
     </section>
     <Footer />
   </body>

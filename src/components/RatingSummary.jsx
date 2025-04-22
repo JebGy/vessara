@@ -8,16 +8,16 @@ const RatingSummary = () => {
   const getBarWidth = (count) => `${(count / totalReviews) * 100}%`;
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md max-w-lg lg:w-5/6 w-full h-full">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-lg lg:w-5/6 w-full h-full nunito-script">
       <h2 className="text-lg font-semibold mb-4 border-b pb-2">
         Comentarios de este producto
       </h2>
 
       {/* Sección dividida en dos columnas */}
-      <div className="flex flex-row gap-8 mb-6">
+      <div className="flex flex-row gap-8">
         {/* Columna 1: número, estrellas, comentarios */}
-        <div className="flex flex-col items-center gap-2 w-1/4">
-          <div className="text-4xl font-bold">{rating}</div>
+        <div className="flex flex-col items-center gap-2 w-44 mt-5">
+          <div className="text-5xl font-bold">{rating}</div>
 
           <div className="flex text-yellow-500">
             {Array.from({ length: 5 }).map((_, i) => {
@@ -37,7 +37,7 @@ const RatingSummary = () => {
         </div>
 
         {/* Columna 2: distribución del rating */}
-        <div className="flex-1 space-y-2">
+        <div className="flex-1 space-y-2 w-40 px-2 mt-3">
           {ratingDistribution.map((count, index) => (
             <div key={index} className="flex items-center gap-2">
               <span className="text-sm w-4 text-gray-700">{5 - index}★</span>

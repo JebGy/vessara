@@ -7,22 +7,22 @@ const AddComment = () => {
   const [comment, setComment] = useState("");
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg max-w-md mt-6">
-      <h2 className="text-lg font-semibold mb-4 border-b pb-2">
-        Agrega un comentario
-      </h2>
-      <div className="flex mb-4 text-green-900 text-2xl">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <button
-            key={star}
-            onClick={() => setRating(star)}
-            className="focus:outline-none"
-          >
-            <FaStar
-              className={star <= rating ? "text-green-700" : "text-gray-300"}
-            />
-          </button>
-        ))}
+    <div className="bg-gray-100 p-6 rounded-lg max-w-md min-w-lg">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-lg font-semibold m-0">Agrega un comentario</h2>
+        <div className="flex text-green-900 text-2xl ml-4">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              onClick={() => setRating(star)}
+              className="focus:outline-none"
+            >
+              <FaStar
+                className={star <= rating ? "text-green-700" : "text-gray-300"}
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
       <textarea
